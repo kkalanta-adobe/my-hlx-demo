@@ -183,13 +183,15 @@ async function buildBreadcrumbs() {
   
   const ol = document.createElement('ol');
   ol.className='breadcrumb';
-  ol.append(...crumbs.map((item) => {
+  ol.append(...crumbs.map((item, index) => {
     const li = document.createElement('li');
     li.className='breadcrumb-item';
-    if (item['aria-current']){
+
+    if (index === crumbs.length-1) {
       li.setAttribute('aria-current', item['aria-current']);
       li.classList.add("active");
     } 
+
     if (item.url) {
       const a = document.createElement('a');
       a.href = item.url;
@@ -198,6 +200,7 @@ async function buildBreadcrumbs() {
     } else {
       li.textContent = item.title;
     }
+
     return li;
   }));
 
