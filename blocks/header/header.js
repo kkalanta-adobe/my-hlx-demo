@@ -121,7 +121,8 @@ async function buildBreadcrumbsFromPath() {
   const homeUrl = `${url.protocol}//${url.hostname}`;
 
   const pathItems = href.split('/').slice(3);
-  pathItems.forEach((item, index)=>{
+  pathItems.filter(item => item.length > 0)
+    .forEach((item, index)=>{
       const itemUrl = `${homeUrl}/${pathItems.slice(0, index + 1).join('/')}/`;
       crumbs.push(
         { 
