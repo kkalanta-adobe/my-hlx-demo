@@ -137,6 +137,9 @@ async function buildBreadcrumbsFromPath() {
 
   crumbs.unshift({ title: homePlaceholder, url: homeUrl });
 
+  if (crumbs.length > 1) {
+        crumbs[crumbs.length - 1].url = null;
+  }
   return crumbs;
 }
 
