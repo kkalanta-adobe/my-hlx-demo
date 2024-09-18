@@ -114,33 +114,63 @@ function getDirectTextContent(menuItem) {
     .join(' ');
 }
 
-async function buildBreadcrumbsFromNavTree(nav, currentUrl) {
+async function buildBreadcrumbsFromPath() {
   const crumbs = [];
-  const homeUrl = document.querySelector('.nav-brand a[href]').href;
-  let menuItem = Array.from(nav.querySelectorAll('a')).find((a) => a.href === currentUrl);
+  const href = document.location.href;
+  const url = new URL(href);
+  const homeUrl = url.protocol + url.hostname;
 
-  if (menuItem) {
-    do {
-      const link = menuItem.querySelector(':scope > a');
-      crumbs.unshift({ title: getDirectTextContent(menuItem), url: link ? link.href : null });
-      menuItem = menuItem.closest('ul')?.closest('li');
-    } while (menuItem);
-  } else if (currentUrl !== homeUrl) {
-    crumbs.unshift({ title: getMetadata('og:title'), url: currentUrl });
-  }
+  const pathItems = href.split('/').slice(3);
+  pathItems.forEach((item, index)=>{
+      const itemUrl = `${homeUrl}/${pathItems.slice(0, index + 1).join('/')}`;
+      crumbs.push(
+        { 
+          title: item.charAt[0].toUpperCase() + item.slice(1),
+          url: itemUrl
+        }
+      );
+  })
 
   const placeholders = await fetchPlaceholders();
   const homePlaceholder = placeholders.breadcrumbsHomeLabel || 'Home';
 
   crumbs.unshift({ title: homePlaceholder, url: homeUrl });
 
-  // last link is current page and should not be linked
-  if (crumbs.length > 1) {
-    crumbs[crumbs.length - 1].url = null;
-  }
-  crumbs[crumbs.length - 1]['aria-current'] = 'page';
+  // // last link is current page and should not be linked
+  // if (crumbs.length > 1) {
+  //   crumbs[crumbs.length - 1].url = null;
+  // }
+  // crumbs[crumbs.length - 1]['aria-current'] = 'page';
   return crumbs;
 }
+
+// async function buildBreadcrumbsFromNavTree(nav, currentUrl) {
+//   const crumbs = [];
+//   const homeUrl = document.querySelector('.nav-brand a[href]').href;
+//   let menuItem = Array.from(nav.querySelectorAll('a')).find((a) => a.href === currentUrl);
+
+//   if (menuItem) {
+//     do {
+//       const link = menuItem.querySelector(':scope > a');
+//       crumbs.unshift({ title: getDirectTextContent(menuItem), url: link ? link.href : null });
+//       menuItem = menuItem.closest('ul')?.closest('li');
+//     } while (menuItem);
+//   } else if (currentUrl !== homeUrl) {
+//     crumbs.unshift({ title: getMetadata('og:title'), url: currentUrl });
+//   }
+
+//   const placeholders = await fetchPlaceholders();
+//   const homePlaceholder = placeholders.breadcrumbsHomeLabel || 'Home';
+
+//   crumbs.unshift({ title: homePlaceholder, url: homeUrl });
+
+//   // last link is current page and should not be linked
+//   if (crumbs.length > 1) {
+//     crumbs[crumbs.length - 1].url = null;
+//   }
+//   crumbs[crumbs.length - 1]['aria-current'] = 'page';
+//   return crumbs;
+// }
 
 
 async function buildBreadcrumbs() {
@@ -148,8 +178,10 @@ async function buildBreadcrumbs() {
   breadcrumbs.className = 'breadcrumbs';
   breadcrumbs.setAttribute('aria-label', 'breadcrumb');
 
-  const crumbs = await buildBreadcrumbsFromNavTree(document.querySelector('.nav-sections'), document.location.href);
-
+  
+  // const crumbs = await buildBreadcrumbsFromNavTree(document.querySelector('.nav-sections'), document.location.href);
+  const crumbs = await buildBreadcrumbsFromPath();
+  
   const ol = document.createElement('ol');
   ol.className='breadcrumb';
   ol.append(...crumbs.map((item) => {
