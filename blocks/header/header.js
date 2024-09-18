@@ -118,14 +118,14 @@ async function buildBreadcrumbsFromPath() {
   const crumbs = [];
   const href = document.location.href;
   const url = new URL(href);
-  const homeUrl = url.protocol + url.hostname;
+  const homeUrl = url.protocol + '/' + url.hostname;
 
   const pathItems = href.split('/').slice(3);
   pathItems.forEach((item, index)=>{
       const itemUrl = `${homeUrl}/${pathItems.slice(0, index + 1).join('/')}`;
       crumbs.push(
         { 
-          title: item.charAt[0].toUpperCase() + item.slice(1),
+          title: item.charAt(0).toUpperCase() + item.slice(1),
           url: itemUrl
         }
       );
@@ -136,11 +136,6 @@ async function buildBreadcrumbsFromPath() {
 
   crumbs.unshift({ title: homePlaceholder, url: homeUrl });
 
-  // // last link is current page and should not be linked
-  // if (crumbs.length > 1) {
-  //   crumbs[crumbs.length - 1].url = null;
-  // }
-  // crumbs[crumbs.length - 1]['aria-current'] = 'page';
   return crumbs;
 }
 
