@@ -144,18 +144,20 @@ async function buildBreadcrumbsFromNavTree(nav, currentUrl) {
 
 
 async function buildBreadcrumbs() {
-  const breadcrumbs = document.createElement('nav').setAttribute('aria-label', 'breadcrumb');
+  const breadcrumbs = document.createElement('nav')
   breadcrumbs.className = 'breadcrumbs';
+  breadcrumbs.setAttribute('aria-label', 'breadcrumb');
 
   const crumbs = await buildBreadcrumbsFromNavTree(document.querySelector('.nav-sections'), document.location.href);
 
-  const ol = document.createElement('ol').className='breadcrumb';
-
+  const ol = document.createElement('ol');
+  ol.className='breadcrumb';
   ol.append(...crumbs.map((item) => {
-    const li = document.createElement('li').className='breadcrumb-item';
+    const li = document.createElement('li');
+    li.className='breadcrumb-item';
     if (item['aria-current']){
       li.setAttribute('aria-current', item['aria-current']);
-      li.className="breadcrumb-item active";
+      li.classList.add("active");
     } 
     if (item.url) {
       const a = document.createElement('a');
