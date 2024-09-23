@@ -6,7 +6,7 @@ header .nav-wrapper {
   position: fixed;
 }
 
-header nav {
+header + #nav {
   box-sizing: border-box;
   display: grid;
   grid-template:
@@ -31,7 +31,7 @@ header nav[aria-expanded='true'] {
 }
 
 @media (width >= 900px) {
-  header nav {
+  header + #nav {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
