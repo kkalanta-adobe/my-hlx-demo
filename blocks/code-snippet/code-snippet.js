@@ -1,6 +1,3 @@
-
-
-
 function setUpSnippet() {
   const copyButtonLabel = "Copy Code";
 
@@ -36,5 +33,5 @@ export default function decorate(block) {
   snippetPre.appendChild(snippetCode);
   // set code content
   snippetCode.textContent = block.textContent;
-  this.setUpSnippet()
+  this.setUpSnippet();
 }
