@@ -45,3 +45,7 @@ div pre button::after {
   border-radius: 5px;
   text-shadow: #c4c4c4 0 0 2px;
 }
+
+div pre button:focus {
+  background-color: #828282;
+}
