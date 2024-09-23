@@ -30,7 +30,11 @@ function setUpSnippet() {
 }
 
 export default function decorate(block) {
-
-
+  // setup dom elements
+  const snippetPre = document.createElement('pre');
+  const snippetCode = document.createElement('code');
+  snippetPre.appendChild(snippetCode);
+  // set code content
+  snippetCode.textContent = block.textContent;
   this.setUpSnippet()
 }
