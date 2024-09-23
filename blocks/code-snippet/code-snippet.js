@@ -33,7 +33,7 @@ export default function decorate(block) {
   snippetPre.appendChild(snippetCode);
   // set code content
   snippetCode.textContent = block.textContent;
-  // clean up the text content as we do not need to show it as a <p /> tag
+  // clean up the text content as we do not need to show it as a P tag
   block.textContent = '';
   setUpSnippet();
   block.append(snippetPre);
