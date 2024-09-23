@@ -111,7 +111,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-}
+} 
 
 /**
  * Loads everything that happens a lot later,
