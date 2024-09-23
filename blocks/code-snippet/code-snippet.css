@@ -6,7 +6,7 @@ pre[class*="language-"] {
   /* more stuff */
 }
 
-pre[class*="language-"] button{
+div[class*="language-"] pre button{
   position: absolute;
   top: 5px;
   right: 5px;
