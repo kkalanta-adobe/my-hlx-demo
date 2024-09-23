@@ -34,4 +34,5 @@ export default function decorate(block) {
   // set code content
   snippetCode.textContent = block.textContent;
   setUpSnippet();
+  block.append(snippetPre);
 }
