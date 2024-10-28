@@ -22,7 +22,8 @@ function initPlayer(URL){
 }
 
 export default function decorate(block) {
-    const videoLink = block.querySelector('a');
+    const link = block.querySelector('a');
+    const videoLink = link.getAttribute('href');
     // setup dom elements
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');    
