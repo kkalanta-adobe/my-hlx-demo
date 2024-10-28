@@ -1,7 +1,7 @@
-function initPlayer(){
+function initPlayer(URL){
     document.addEventListener('DOMContentLoaded', () => {
         const video = document.getElementById('video');
-        const videoSrc = 'https://www.test.com/stream.m3u8';
+        const videoSrc = URL;
       
         if (Hls.isSupported()) {
           const hls = new Hls();
@@ -22,6 +22,7 @@ function initPlayer(){
 }
 
 export default function decorate(block) {
+    const videoLink = block.querySelector('a');
     // setup dom elements
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');    
@@ -32,6 +33,5 @@ export default function decorate(block) {
     //attach block
     block.append(videoContainer);
     //initialize player
-    initPlayer();
+    initPlayer(videoLink);
   }
-  
