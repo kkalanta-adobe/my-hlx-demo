@@ -1,24 +1,24 @@
-function initPlayer(URL){
-    document.addEventListener('DOMContentLoaded', () => {
-        const video = document.getElementById('video');
-        const videoSrc = URL;
-      
-        if (Hls.isSupported()) {
-          const hls = new Hls();
-          hls.loadSource(videoSrc);
-          hls.attachMedia(video);
-          hls.on(Hls.Events.MANIFEST_PARSED, () => {
+function initPlayer(URL) {
+
+    const video = document.getElementById('video');
+    const videoSrc = URL;
+
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
             video.play();
-          });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = videoSrc;
-          video.addEventListener('loadedmetadata', () => {
+        });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSrc;
+        video.addEventListener('loadedmetadata', () => {
             video.play();
-          });
-        } else {
-          console.error('HLS not supported in this browser');
-        }
-      });
+        });
+    } else {
+        console.error('HLS not supported in this browser');
+    }
+
 }
 
 export default function decorate(block) {
@@ -27,10 +27,10 @@ export default function decorate(block) {
     link.remove();
     // setup dom elements
     const video = document.createElement('video');
-    video.setAttribute('controls','controls');
+    video.setAttribute('controls', 'controls');
     video.id = 'video';
     //attach block
     block.append(video);
     //initialize player
     initPlayer(videoLink);
-  }
+}
