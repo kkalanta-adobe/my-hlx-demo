@@ -27,7 +27,7 @@ export default function decorate(block) {
     const videoContainer = document.createElement('div');
     videoContainer.classList.add('video-container');    
     const video = document.createElement('video');
-    video.setAttribute('controls');
+    video.setAttribute('controls','controls');
     video.id = 'video';
     videoContainer.appendChild(video);
     //attach block
