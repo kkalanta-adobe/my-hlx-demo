@@ -24,15 +24,13 @@ function initPlayer(URL){
 export default function decorate(block) {
     const link = block.querySelector('a');
     const videoLink = link.getAttribute('href');
+    link.remove();
     // setup dom elements
-    const videoContainer = document.createElement('div');
-    videoContainer.classList.add('video-container');    
     const video = document.createElement('video');
     video.setAttribute('controls','controls');
     video.id = 'video';
-    videoContainer.appendChild(video);
     //attach block
-    block.append(videoContainer);
+    block.append(video);
     //initialize player
     initPlayer(videoLink);
   }
