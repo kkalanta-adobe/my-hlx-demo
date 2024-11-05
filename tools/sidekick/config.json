@@ -1,6 +1,5 @@
 {
-    "project": "franklin-asset-selector",
-    "host": "main--dev-my-hlx-demo--kkalanta-adobe.aem.live",
+    "project": "my-hlx-demo",
     "plugins": [
         {
             "id": "asset-library",
