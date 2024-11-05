@@ -2,7 +2,7 @@
     "blockName": [
         {
             "mimeType": "video/*",
-            "value": "Hls-player"
+            "value": "Hls player"
         }
     ],
     "copyMode": [
