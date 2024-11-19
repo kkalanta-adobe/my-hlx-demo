@@ -6,7 +6,7 @@ header .nav-wrapper {
   position: fixed;
 }
 
-header nav[class='main-nav'] {
+header nav {
   box-sizing: border-box;
   display: grid;
   grid-template:
@@ -31,7 +31,7 @@ header nav[aria-expanded='true'] {
 }
 
 @media (width >= 900px) {
-  header nav[class='main-nav'] {
+  header nav {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
@@ -265,8 +265,4 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
-}
-
-header nav[class='breadcumbs']{
-  padding: 0px 0;
 }
