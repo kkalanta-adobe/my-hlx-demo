@@ -166,6 +166,7 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
+  justify-content: end;
   font-size: var(--body-font-size-s);
 }
 
