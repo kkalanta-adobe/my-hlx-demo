@@ -182,28 +182,10 @@ header nav .nav-sections ul > li > ul > li {
 }
 
 @media (width >= 900px) {
-  header nav {
-    display: flex;
-    justify-content: space-between; /* Keep this */
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
-  }
-  
-  /* Create a flex container for sections and tools */
   header nav .nav-sections {
-    display: flex;
+    display: block;
     visibility: visible;
     white-space: nowrap;
-    order: 2; /* Move sections after brand */
-  }
-  
-  header nav .nav-tools {
-    order: 3; /* Move tools to the end */
-  }
-  
-  header nav .nav-brand {
-    order: 1; /* Keep brand at the start */
   }
 
   header nav[aria-expanded='true'] .nav-sections {
