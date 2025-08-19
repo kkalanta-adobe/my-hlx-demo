@@ -22,12 +22,9 @@ export default function decorate(block) {
     const link = block.querySelector('a');
     const videoLink = link.getAttribute('href');
     link.remove();
-    // setup dom elements
     const video = document.createElement('video');
     video.setAttribute('controls', 'controls');
     video.id = 'video';
-    //attach block
     block.append(video);
-    //initialize player
-    initPlayer(videoLink);
+    initPlayer(videoLink);   
 }
