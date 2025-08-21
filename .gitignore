@@ -3,6 +3,7 @@ coverage/*
 logs/*
 node_modules/*
 .cursor/*
+config-admin-backup.json
 
 helix-importer-ui
 .DS_Store

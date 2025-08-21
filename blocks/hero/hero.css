@@ -30,6 +30,10 @@
   height: 100%;
 }
 
+.hero-container .hero-wrapper h1 {
+  color: var(--text-color);
+}
+
 @media (width >= 900px) {
   .hero {
     padding: 40px 32px;
