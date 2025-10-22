@@ -1,3 +1,5 @@
+import { exchange } from '../libs/aemcs-api-client-lib.js';
+import fs from 'fs';
 /**
  * Gets an access token for AEM Cloud Service API authentication.
  * This function loads the configuration and exchanges JWT for access token.
@@ -5,14 +7,12 @@
  */
 async function getAccessToken() {
     try {
-        // Import the exchange library and configuration
-        const { default: exchange } = await import('../libs/aemcs-api-client-lib.js');
-        
+
         // Load configuration from certs file
         const jsonFile = '../certs/22-10-2026.json';
-        
+
         const config = JSON.parse(fs.readFileSync(jsonFile, 'utf8'));
-        
+
         // Exchange JWT for access token
         exchange(config).then(accessToken => {
             return accessToken;
@@ -36,13 +36,13 @@ export async function makeAuthenticatedRequest(url, options = {}) {
     if (!token) {
         throw new Error('Failed to obtain access token');
     }
-    
+
     const headers = {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
         ...options.headers
     };
-    
+
     return fetch(url, {
         ...options,
         headers
