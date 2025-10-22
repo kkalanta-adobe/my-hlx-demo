@@ -1,28 +1,20 @@
 export default function decorate(block) {
-  const rows = [...block.children];
-  const links = [];
-  let copyright = '© 2023';
-
-  rows.forEach((row) => {
-    const cells = [...row.children];
-    if (cells.length === 1) {
-      copyright = cells[0].textContent.trim();
-    } else if (cells.length === 2) {
-      links.push({
-        text: cells[0].textContent.trim(),
-        href: cells[1].textContent.trim(),
-      });
-    }
-  });
-
   block.innerHTML = '';
 
   const wrapper = document.createElement('div');
 
   const copyrightEl = document.createElement('p');
-  copyrightEl.textContent = copyright;
+  copyrightEl.textContent = '© 2023';
 
   const nav = document.createElement('nav');
+
+  const links = [
+    { text: 'Twitter', href: '#' },
+    { text: 'LinkedIn', href: '#' },
+    { text: 'Email', href: 'mailto:hello@example.com' },
+    { text: 'RSS feed', href: '#' },
+    { text: 'Add to Feedly', href: '#' },
+  ];
 
   links.forEach((link) => {
     const a = document.createElement('a');
