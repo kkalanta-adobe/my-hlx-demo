@@ -1,0 +1,63 @@
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.tags .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tags .tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-text);
+}
+
+.tags .tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-text);
+}
+
+.tags .tag-pink {
+    background-color: var(--tag-pink-bg);
+    color: var(--tag-pink-text);
+}
+
+.tags .tag-cyan {
+    background-color: var(--tag-cyan-bg);
+    color: var(--tag-cyan-text);
+}
+
+.tags .tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-text);
+}
+
+.tags .tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-text);
+}
+
+.tags .tag-gray {
+    background-color: var(--tag-gray-bg);
+    color: var(--tag-gray-text);
+}
+
+.tags .tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-text);
+}
+
+@media (prefers-contrast: high) {
+    .tags .tag {
+        border: 1px solid currentColor;
+    }
+}
+

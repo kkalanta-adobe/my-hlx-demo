@@ -1,0 +1,127 @@
+.article-cards .blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.article-cards .blog-card-link {
+    color: inherit;
+    text-decoration: none;
+    display: contents;
+}
+
+.article-cards .blog-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.article-cards .blog-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.article-cards .blog-date {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--color-accent);
+}
+
+.article-cards .blog-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.article-cards .blog-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--color-text-primary);
+    flex: 1;
+}
+
+.article-cards .blog-title.small {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.article-cards .arrow-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--color-text-primary);
+}
+
+.article-cards .blog-excerpt {
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-text-secondary);
+}
+
+.article-cards .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.article-cards .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.article-cards .tag-purple {
+    background-color: var(--tag-purple-bg);
+    color: var(--tag-purple-text);
+}
+
+.article-cards .tag-blue {
+    background-color: var(--tag-blue-bg);
+    color: var(--tag-blue-text);
+}
+
+.article-cards .tag-pink {
+    background-color: var(--tag-pink-bg);
+    color: var(--tag-pink-text);
+}
+
+.article-cards .tag-cyan {
+    background-color: var(--tag-cyan-bg);
+    color: var(--tag-cyan-text);
+}
+
+.article-cards .tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-text);
+}
+
+.article-cards .tag-orange {
+    background-color: var(--tag-orange-bg);
+    color: var(--tag-orange-text);
+}
+
+.article-cards .tag-gray {
+    background-color: var(--tag-gray-bg);
+    color: var(--tag-gray-text);
+}
+
+.article-cards .tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-text);
+}
+
+@media (max-width: 768px) {
+    .article-cards .blog-image {
+        height: 228px;
+    }
+}
+
