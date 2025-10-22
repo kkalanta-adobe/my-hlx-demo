@@ -15,17 +15,14 @@ export default function decorate(block) {
     }
   });
 
-  block.textContent = '';
+  block.innerHTML = '';
 
-  const container = document.createElement('div');
-  container.className = 'container';
+  const wrapper = document.createElement('div');
 
   const copyrightEl = document.createElement('p');
-  copyrightEl.className = 'footer-copyright';
   copyrightEl.textContent = copyright;
 
   const nav = document.createElement('nav');
-  nav.className = 'footer-nav';
 
   links.forEach((link) => {
     const a = document.createElement('a');
@@ -34,8 +31,8 @@ export default function decorate(block) {
     nav.appendChild(a);
   });
 
-  container.appendChild(copyrightEl);
-  container.appendChild(nav);
-  block.appendChild(container);
+  wrapper.appendChild(copyrightEl);
+  wrapper.appendChild(nav);
+  block.appendChild(wrapper);
 }
 
