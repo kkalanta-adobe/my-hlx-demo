@@ -9,9 +9,15 @@ async function getAccessToken() {
     try {
 
         // Load configuration from certs file
-        const jsonFile = '../certs/22-10-2026.json';
-
-        const config = JSON.parse(fs.readFileSync(jsonFile, 'utf8'));
+        const jsonFile = await fetch(
+            `${window.hlx.codeBasePath}/scripts/certs/22-10-2026.json`,
+        ).then(response => response.json()).then(json => {
+            return json;
+        }).catch(e => {
+            return null;
+        });
+        console.log(jsonFile);
+        const config = JSON.parse(jsonFile, 'utf8');
 
         // Exchange JWT for access token
         exchange(config).then(accessToken => {
