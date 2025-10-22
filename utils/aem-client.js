@@ -9,15 +9,16 @@ async function getAccessToken() {
         const { default: exchange } = await import('../libs/aemcs-api-client-lib.js');
         
         // Load configuration from certs file
-        const response = await fetch('../certs/22-10-2026.json');
-        if (!response.ok) {
-            throw new Error('Failed to load configuration');
-        }
-        const config = await response.json();
+        const jsonFile = '../certs/22-10-2026.json';
+        
+        const config = JSON.parse(fs.readFileSync(jsonFile, 'utf8'));
         
         // Exchange JWT for access token
-        const tokenResponse = await exchange(config);
-        return tokenResponse.access_token;
+        exchange(config).then(accessToken => {
+            return accessToken;
+        }).catch(e => {
+            return null;
+        });
     } catch (error) {
         console.error('Error getting access token:', error);
         return null;
