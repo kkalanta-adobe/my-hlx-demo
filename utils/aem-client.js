@@ -1,5 +1,4 @@
 import { exchange } from '../libs/aemcs-api-client-lib.js';
-import fs from 'fs';
 /**
  * Gets an access token for AEM Cloud Service API authentication.
  * This function loads the configuration and exchanges JWT for access token.
