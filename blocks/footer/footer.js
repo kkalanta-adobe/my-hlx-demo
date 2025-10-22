@@ -1,20 +1,41 @@
-import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
+export default function decorate(block) {
+  const rows = [...block.children];
+  const links = [];
+  let copyright = '© 2023';
 
-/**
- * loads and decorates the footer
- * @param {Element} block The footer block element
- */
-export default async function decorate(block) {
-  // load footer as fragment
-  const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  const fragment = await loadFragment(footerPath);
+  rows.forEach((row) => {
+    const cells = [...row.children];
+    if (cells.length === 1) {
+      copyright = cells[0].textContent.trim();
+    } else if (cells.length === 2) {
+      links.push({
+        text: cells[0].textContent.trim(),
+        href: cells[1].textContent.trim(),
+      });
+    }
+  });
 
-  // decorate footer DOM
   block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  block.append(footer);
+  const container = document.createElement('div');
+  container.className = 'container';
+
+  const copyrightEl = document.createElement('p');
+  copyrightEl.className = 'footer-copyright';
+  copyrightEl.textContent = copyright;
+
+  const nav = document.createElement('nav');
+  nav.className = 'footer-nav';
+
+  links.forEach((link) => {
+    const a = document.createElement('a');
+    a.href = link.href;
+    a.textContent = link.text;
+    nav.appendChild(a);
+  });
+
+  container.appendChild(copyrightEl);
+  container.appendChild(nav);
+  block.appendChild(container);
 }
+
