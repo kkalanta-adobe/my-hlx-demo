@@ -1,9 +1,4 @@
-/**
- * Header Block Styles
- * Navigation header with logo, menu items, and theme toggle
- */
-
- .header {
+.header {
   background-color: var(--color-background);
   border-bottom: 1px solid var(--color-border);
   padding: var(--spacing-lg) 0;
@@ -12,13 +7,13 @@
   z-index: 100;
 }
 
-.navbar {
+.header .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo {
+.header .logo {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -28,32 +23,25 @@
   transition: opacity 0.2s ease;
 }
 
-.logo:hover {
+.header .logo:hover {
   opacity: 0.8;
 }
 
-.logo-text {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--color-text-primary);
-  letter-spacing: 0.1em;
-}
-
-.logo-text-bold {
+.header .logo-text-bold {
   font-size: 20px;
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: 0.1em;
 }
 
-.nav-menu {
+.header .nav-menu {
   display: flex;
   align-items: center;
   gap: 14px;
   list-style: none;
 }
 
-.nav-item a {
+.header .nav-item a {
   font-size: 20px;
   color: var(--color-text-primary);
   padding: 8px;
@@ -61,17 +49,17 @@
   transition: color 0.2s ease;
 }
 
-.nav-item.active a {
+.header .nav-item.active a {
   border-bottom: 1px solid var(--color-text-primary);
   font-weight: 700;
 }
 
-.nav-item a:hover {
+.header .nav-item a:hover {
   color: var(--color-accent);
   opacity: 1;
 }
 
-.theme-toggle {
+.header .theme-toggle {
   background-color: var(--color-text-primary);
   border-radius: var(--radius-lg);
   padding: 8px 16px;
@@ -81,88 +69,84 @@
   transition: all 0.3s ease;
 }
 
-.theme-toggle:hover {
+.header .theme-toggle:hover {
   transform: scale(1.05);
 }
 
-.theme-toggle svg {
+.header .theme-toggle svg {
   width: 24px;
   height: 24px;
   transition: opacity 0.3s ease;
 }
 
-/* Light theme toggle styling */
-:root .theme-toggle {
+:root .header .theme-toggle {
   background-color: #1A1A1A;
 }
 
-:root .theme-toggle svg {
+:root .header .theme-toggle svg {
   color: white;
 }
 
-/* Dark theme toggle styling */
-[data-theme="dark"] .theme-toggle {
+[data-theme="dark"] .header .theme-toggle {
   background-color: white;
 }
 
-[data-theme="dark"] .theme-toggle svg {
+[data-theme="dark"] .header .theme-toggle svg {
   color: #090D1F;
 }
 
-.mobile-menu-btn {
+.header .mobile-menu-btn {
   display: none;
   color: var(--color-text-primary);
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
-  .desktop-menu {
-    display: none;
+  .header .desktop-menu {
+      display: none;
   }
-
-  .mobile-menu-btn {
-    display: block;
+  
+  .header .mobile-menu-btn {
+      display: block;
   }
-
-  .logo {
-    gap: 4px;
+  
+  .header .logo {
+      gap: 4px;
   }
-
-  .logo-text,
-  .logo-text-bold {
-    font-size: 16px;
-    letter-spacing: 0.08em;
+  
+  .header .logo-text-bold {
+      font-size: 16px;
+      letter-spacing: 0.08em;
   }
-
-  .nav-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
-    padding: var(--spacing-lg);
-    flex-direction: column;
-    gap: var(--spacing-md);
+  
+  .header .nav-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--color-background);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--spacing-lg);
+      flex-direction: column;
+      gap: var(--spacing-md);
   }
-
-  .nav-menu.active {
-    display: flex;
+  
+  .header .nav-menu.active {
+      display: flex;
   }
-
-  .nav-item {
-    width: 100%;
+  
+  .header .nav-item {
+      width: 100%;
   }
-
-  .nav-item a {
-    display: block;
-    padding: var(--spacing-sm);
+  
+  .header .nav-item a {
+      display: block;
+      padding: var(--spacing-sm);
   }
-
-  .theme-toggle {
-    width: 100%;
-    justify-content: center;
+  
+  .header .theme-toggle {
+      width: 100%;
+      justify-content: center;
   }
 }
 
